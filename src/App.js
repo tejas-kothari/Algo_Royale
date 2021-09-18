@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import "./App.css";
+import Board from "./Board";
+import Menu from "./Menu";
+import "./board.scss";
+import Status from "./Status";
 
 function App() {
+  const [walletBal, setWalletBal] = useState(1000);
+
+  function val(value) {
+    setWalletBal((oldBal) => oldBal - value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Menu walletBal={walletBal} />
+      <div id="modal"></div>
+      <div className="board-screen">
+        <Board changeBal={val} />
+        <Status />
+      </div>
+    </>
   );
 }
 
