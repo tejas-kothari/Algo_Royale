@@ -6,6 +6,7 @@ import Menu from "./Menu";
 import "./board.scss";
 import Status from "./Status";
 import Marketplace from "./marketplace/marketplace";
+import Welcome from "./welcome/welcome";
 
 function App() {
   const [walletBal, setWalletBal] = useState(1000);
@@ -17,6 +18,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/" exact>
+          <Welcome />
+        </Route>
         <Route path="/sicbo" exact>
           <Menu walletBal={walletBal} />
           <div id="modal"></div>
