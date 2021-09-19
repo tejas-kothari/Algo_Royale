@@ -10,7 +10,7 @@
   flex-direction: column;
   height: 100vh;
 
-  margin-top: -2rem;
+  margin-top: -20px;
 }
 
 .welcome svg {
@@ -32,7 +32,7 @@
   font-family: Mallaire;
 
   min-height: 100vh;
-  padding: 2rem;
+  padding: 20px;
 
   color: hsla(0, 0%, 0%, 0.6);
   background: var(--background-color);
@@ -40,10 +40,10 @@
 }
 
 .welcome h1 {
-  font-size: 3.2rem;
+  font-size: 32px;
   padding: 0;
   margin: 0;
-  margin-bottom: -10rem;
+  margin-bottom: -100px;
   background: -webkit-linear-gradient(
     25deg,
     hsl(27, 53%, 55%) 0%,
@@ -61,10 +61,10 @@
 }
 
 .welcome .wrap {
-  margin: 2rem;
+  margin: 20px;
 
   transform-style: preserve-3d;
-  transform: perspective(100rem);
+  transform: perspective(1000px);
 
   cursor: pointer;
 }
@@ -75,10 +75,10 @@
   --bX: 50%;
   --bY: 80%;
 
-  width: 30rem;
-  height: 36rem;
+  width: 300px;
+  height: 360px;
   border: 1px solid var(--background-color);
-  border-radius: 1.6rem;
+  border-radius: 16px;
   /* padding-top: 10rem; */
 
   display: flex;
@@ -89,8 +89,8 @@
 
   background: hsl(212, 10%, 26%);
   background-position: var(--bX) var(--bY);
-  background-size: 40rem auto;
-  box-shadow: 0 0 3rem 0.5rem hsla(0, 0%, 0%, 0.2);
+  background-size: 400px auto;
+  box-shadow: 0 0 30px 5px hsla(0, 0%, 0%, 0.2);
 
   transition: transform 0.6s 1s;
 }
@@ -109,8 +109,8 @@
 .welcome .container::after {
   content: "";
 
-  width: 2rem;
-  height: 2rem;
+  width: 20px;
+  height: 20px;
   border: 1px solid hsl(29, 81%, 79%);
 
   position: absolute;
@@ -121,19 +121,19 @@
 }
 
 .welcome .container::before {
-  top: 2rem;
-  right: 2rem;
+  top: 20px;
+  right: 20px;
 
-  border-radius: 2rem;
+  border-radius: 20px;
   border-bottom-width: 0;
   border-left-width: 0;
 }
 
 .welcome .container::after {
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 20px;
+  left: 20px;
 
-  border-radius: 2rem;
+  border-radius: 20px;
   border-top-width: 0;
   border-right-width: 0;
 }
@@ -142,8 +142,8 @@
 .welcome .container-inner::after {
   content: "";
 
-  width: 1rem;
-  height: 1rem;
+  width: 10px;
+  height: 10px;
   border: 1px solid hsl(29, 81%, 79%);
 
   position: absolute;
@@ -154,19 +154,19 @@
 }
 
 .welcome .container-inner::before {
-  top: 1rem;
-  right: 1rem;
+  top: 10px;
+  right: 10px;
 
-  border-radius: 1rem;
+  border-radius: 10px;
   border-bottom-width: 0;
   border-left-width: 0;
 }
 
 .welcome .container-inner::after {
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 10px;
+  left: 10px;
 
-  border-radius: 1rem;
+  border-radius: 10px;
   border-top-width: 0;
   border-right-width: 0;
 }
@@ -189,7 +189,7 @@
 
 .welcome .container p {
   /* color: hsla(0, 0%, 100%, 0.6); */
-  font-size: 2.2rem;
+  font-size: 22px;
   width: 100%;
   background: -webkit-linear-gradient(
     25deg,
@@ -202,8 +202,8 @@
 
 .welcome .wrap:hover .container::before,
 .welcome .wrap:hover .container::after {
-  width: calc(100% - 4rem);
-  height: calc(100% - 4rem);
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
 }
 
 .welcome .abs-site-link {
@@ -211,13 +211,13 @@
   bottom: 20px;
   left: 20px;
   color: hsla(0, 0%, 0%, 0.6);
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 
 .welcome footer {
   color: honeydew;
   font-family: Glory;
   font-weight: 100;
-  font-size: 1.2rem;
-  margin-top: 10rem;
+  font-size: 12px;
+  margin-top: 100px;
 }
