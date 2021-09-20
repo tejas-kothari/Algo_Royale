@@ -3,9 +3,26 @@
   background: -webkit-linear-gradient(25deg, #c9864f 0%, #f5c89e 100%);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
 }
 
-.marketplace-header > p {
+.marketplace-header > div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.marketplace-header img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+// .marketplace-header fill {
+//   color: white;
+// }
+
+.marketplace-header p {
   all: initial;
   color: black;
 }
