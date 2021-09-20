@@ -32,19 +32,19 @@ export default function Row1({ onOpen }) {
           <p>TWO</p>
           <Dice num={2} />
         </div>
-        <div className="element">
+        <div className="element" onClick={() => onOpen("one", 3, null, 2)}>
           <p>THREE</p>
           <Dice num={3} />
         </div>
-        <div className="element">
+        <div className="element" onClick={() => onOpen("one", 4, null, 2)}>
           <p>FOUR</p>
           <Dice num={4} />
         </div>
-        <div className="element">
+        <div className="element" onClick={() => onOpen("one", 5, null, 2)}>
           <p>FIVE</p>
           <Dice num={5} />
         </div>
-        <div className="element">
+        <div className="element" onClick={() => onOpen("one", 6, null, 2)}>
           <p>SIX</p>
           <Dice num={6} />
         </div>

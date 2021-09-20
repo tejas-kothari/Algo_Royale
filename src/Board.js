@@ -42,9 +42,9 @@ export default function Board({ changeBal }) {
 
   return (
     <div className="board-screen-child" id="board">
-      <Row4 />
-      <Row3 />
-      <Row2 />
+      <Row4 onOpen={openClose} />
+      <Row3 onOpen={openClose} />
+      <Row2 onOpen={openClose} />
       <Row1 onOpen={openClose} />
       <InputModal
         open={isOpen}

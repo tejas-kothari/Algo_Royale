@@ -30,6 +30,7 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     setSubmit(true);
     changeBal(bet);
     sendTxs();
+    setBet(0);
   }
 
   function getRandomIntInclusive(min, max) {
@@ -204,7 +205,14 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
           </p>
         </div>
         <button onClick={onUserSubmit}>Submit Bet</button>
-        <button onClick={onClose}>Close</button>
+        <button
+          onClick={() => {
+            setBet(0);
+            onClose();
+          }}
+        >
+          Close
+        </button>
       </div>
     </>,
     document.getElementById("modal")
