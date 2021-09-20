@@ -14,7 +14,7 @@
 }
 
 .welcome svg {
-  height: 500px;
+  /* height: 500px; */
 }
 
 /* *,
@@ -40,6 +40,8 @@
 }
 
 .welcome h1 {
+  position: relative;
+  top: -200px;
   font-size: 32px;
   padding: 0;
   margin: 0;
@@ -54,6 +56,8 @@
 }
 
 .welcome .main {
+  position: relative;
+  top: -250px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

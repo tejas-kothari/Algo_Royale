@@ -32,7 +32,7 @@ export default function Welcome() {
   return (
     <body className="welcome">
       <section>
-        <h1>Maison de Jeu</h1>
+        <h1>Algo Royale</h1>
       </section>
       <section class="main">
         <div class="wrap wrap--1" ref={ref_wrap1}>
