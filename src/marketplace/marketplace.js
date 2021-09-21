@@ -3,11 +3,12 @@ import "./marketplace.scss";
 import sampleNFTImage from "../images/ennj-artwork-1080x675.png";
 import algoIcon from "../images/algoIcon.png";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../storeSlice.js";
+import { buyItem, sellItem } from "../storeSlice.js";
 import MyAlgoConnect from "@randlabs/myalgo-connect";
 import algosdk from "algosdk";
 import walletshs from "../images/001-wallet.svg";
 import { useHistory } from "react-router-dom";
+import SellModal from "./sellModal";
 
 import {
   BrowserRouter as Router,
@@ -18,10 +19,12 @@ import {
 } from "react-router-dom";
 
 export default function Marketplace() {
+  const [sellModalOpen, setSellModalOpen] = useState(false);
   let history = useHistory();
   let match = useRouteMatch();
   console.log(match);
   const myBoughtItems = useSelector((state) => state.store.myItems);
+  const marketplaceItem = useSelector((state) => state.store.marketplaceItems);
   const dispatch = useDispatch();
 
   const sendTx = async () => {
@@ -42,26 +45,10 @@ export default function Marketplace() {
     }
   };
 
-  const buyItem = async (item, index) => {
+  const buyItemHTML = async (item, index) => {
     await sendTx();
-    dispatch(addItem(item));
-    setitemArr((arr) => {
-      arr.splice(index, 1);
-      console.log(arr);
-      return [...arr];
-    });
+    dispatch(buyItem(index));
   };
-
-  const [itemArr, setitemArr] = useState([
-    { itemName: "Board piece 1", price: 45 },
-    { itemName: "Board piece 2", price: 45 },
-    { itemName: "Board piece 3", price: 45 },
-    { itemName: "Board piece 4", price: 45 },
-    { itemName: "Board piece 5", price: 45 },
-    { itemName: "Board piece 6", price: 45 },
-    { itemName: "Board piece 7", price: 45 },
-    { itemName: "Board piece 8", price: 45 },
-  ]);
 
   return (
     <div className="marketplace">
@@ -84,7 +71,7 @@ export default function Marketplace() {
           <Route path={match.path} exact>
             <h1>Featured game items</h1>
             <div className="itemsContainer">
-              {itemArr.map((item, index) => (
+              {marketplaceItem.map((item, index) => (
                 <div className="itemContainer">
                   <img src={sampleNFTImage} />
                   <div className="itemInfo">
@@ -99,7 +86,7 @@ export default function Marketplace() {
                         <h6>(US$ {item.price * 1.81})</h6>
                       </div>
                     </div>
-                    <button onClick={() => buyItem(item, index)}>
+                    <button onClick={() => buyItemHTML(item, index)}>
                       Buy NFT
                     </button>
                   </div>
@@ -125,9 +112,14 @@ export default function Marketplace() {
                         <h6>(US$ {item.price * 1.81})</h6>
                       </div>
                     </div>
-                    <button onClick={() => buyItem(item, index)}>
+                    <button onClick={() => setSellModalOpen(true)}>
                       Sell NFT
                     </button>
+                    <SellModal
+                      open={sellModalOpen}
+                      onClose={() => setSellModalOpen(false)}
+                      index={index}
+                    />
                   </div>
                 </div>
               ))}

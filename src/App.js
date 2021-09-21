@@ -30,6 +30,7 @@ function App() {
           </div>
         </Route>
         <Route path="/marketplace">
+          <div id="modal"></div>
           <Marketplace />
         </Route>
       </Switch>
