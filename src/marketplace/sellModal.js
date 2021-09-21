@@ -28,26 +28,32 @@ export default function SellModal({ open, onClose, index }) {
     setSubmit(false);
   }
 
-  function onUserSubmit() {
+  async function onUserSubmit() {
     setSubmit(true);
-    sendTxs();
+    await sendTxs();
+    console.log("Continuing....");
     dispatch(sellItem({ index: index, sellingPrice: bet }));
+    console.log("Passing....");
     setBet(0);
     onClose();
   }
 
   const sendTxs = async () => {
-    const myAlgoConnect = new MyAlgoConnect();
-    const accountsSharedByUser = await myAlgoConnect.connect();
-    console.log(accountsSharedByUser[0].address);
+    try {
+      const myAlgoConnect = new MyAlgoConnect();
+      const accountsSharedByUser = await myAlgoConnect.connect();
+      console.log(accountsSharedByUser[0].address);
 
-    const appIndex = 1;
-    const algodClient = new algosdk.Algodv2(
-      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "http://localhost",
-      "4001"
-    );
-    const suggestedParams = await algodClient.getTransactionParams().do();
+      const appIndex = 1;
+      const algodClient = new algosdk.Algodv2(
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "http://localhost",
+        "4001"
+      );
+      const suggestedParams = await algodClient.getTransactionParams().do();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return ReactDOM.createPortal(
