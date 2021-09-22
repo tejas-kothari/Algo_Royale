@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./board.scss";
+import { useHistory } from "react-router-dom";
 
 export default function Menu({ walletBal }) {
+  let history = useHistory();
   const [toggle, setToggle] = useState(false);
   // const [menu, setMenu] = useState();
 
@@ -53,9 +55,19 @@ export default function Menu({ walletBal }) {
         className="element"
         id="menu-element"
       >
-        <a href="./">Home</a>
-        <a href="./sicbo">Sic Bo</a>
-        <a href="./marketplace"> Marketplace</a>
+        <p className="sectionButtons" onClick={() => history.push("/")}>
+          Home
+        </p>
+        <p className="sectionButtons" onClick={() => history.push("/sicbo")}>
+          Sic Bo
+        </p>
+        <p
+          className="sectionButtons"
+          onClick={() => history.push("/marketplace")}
+        >
+          {" "}
+          Marketplace
+        </p>
 
         <p style={{ marginTop: "2rem" }}>Wallet Balance = {walletBal} ALGOS</p>
       </div>

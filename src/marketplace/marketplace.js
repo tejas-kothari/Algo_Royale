@@ -53,7 +53,7 @@ export default function Marketplace() {
   return (
     <div className="marketplace" id="market">
       <div className="marketplace-header">
-        <p>AlgoRoyale NFT Marketplace</p>
+        <p></p>
 
         {match.path === "/marketplace" && match.isExact ? (
           <div onClick={() => history.push("/marketplace/myitems")}>
@@ -62,18 +62,18 @@ export default function Marketplace() {
           </div>
         ) : (
           <div onClick={() => history.push("/marketplace")}>
-            <p>Marketplace</p>
+            <p> Back to Marketplace</p>
           </div>
         )}
       </div>
       <div style={{ padding: "0 200px" }}>
         <Switch>
           <Route path={match.path} exact>
-            <h1>Featured game items</h1>
+            <h2>Featured game items</h2>
             <div className="itemsContainer">
               {marketplaceItem.map((item, index) => (
-                <div className="itemContainer">
-                  <img src={sampleNFTImage} />
+                <div style={item.style} className="itemContainer">
+                  <img src={item.image} />
                   <div className="itemInfo">
                     <h4>{item.itemName}</h4>
                     <div className="line"></div>
@@ -95,11 +95,11 @@ export default function Marketplace() {
             </div>
           </Route>
           <Route path={`${match.path}/myitems`}>
-            <h1>My items</h1>
+            <h2>My items</h2>
             <div className="itemsContainer">
               {myBoughtItems.map((item, index) => (
-                <div className="itemContainer">
-                  <img src={sampleNFTImage} />
+                <div style={item.style} className="itemContainer">
+                  <img src={item.image} />
                   <div className="itemInfo">
                     <h4>{item.itemName}</h4>
                     <div className="line"></div>

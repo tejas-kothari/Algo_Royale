@@ -1,6 +1,6 @@
 .marketplace-header {
   height: 60px;
-  background: -webkit-linear-gradient(25deg, #c9864f 0%, #f5c89e 100%);
+  // background: -webkit-linear-gradient(25deg, #c9864f 0%, #f5c89e 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,11 +23,13 @@
 // }
 
 .marketplace-header p {
-  all: initial;
-  color: black;
+  // all: initial;
+  color: #f5c89e;
+  cursor: pointer;
 }
 
-.marketplace h1 {
+.marketplace h2 {
+  font-weight: 400;
   background: -webkit-linear-gradient(
     25deg,
     hsl(27, 53%, 55%) 0%,
@@ -38,34 +40,42 @@
 }
 
 .itemsContainer {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-gap: 1.5rem;
 }
 
 .itemContainer {
-  margin: 5px 5px;
-  width: calc(25% - 20px);
-  height: 320px;
-  border: 3px solid #c9864f;
+  // margin: 8px;
+  // width: calc(25% - 20px);
+  height: 100%;
+  // height: 320px;
+  border: 2px solid hsl(27, 53%, 55%);
   border-radius: 0.5rem;
   overflow: hidden;
-  padding-bottom: 20px;
+  // padding-bottom: 20px;
 }
 
 .itemInfo {
   display: flex;
   flex-direction: column;
-  padding: 0 10px;
-  height: 50%;
+  padding: 0 2rem;
+  // height: 50%;
 }
 
 .itemContainer > img {
-  height: 50%;
+  max-width: 100px;
+  // height: 50%;
+  display: flex;
+  margin: 3rem auto;
 }
 
 .itemContainer h4 {
   margin: 0.5rem 0em;
+  padding-left: 1rem;
   font-size: 1.2rem;
+  font-weight: 400;
+
   background: -webkit-linear-gradient(
     25deg,
     hsl(27, 53%, 55%) 0%,
@@ -73,6 +83,14 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.itemContainer button {
+  font-family: Glory;
+  font-family: 400;
+
+  padding: 0.2rem 1rem;
+  margin: 2rem auto 1rem auto;
 }
 
 .priceInfo > p {
@@ -103,6 +121,7 @@
 
 .priceInfo > div p {
   all: initial;
+  font-family: Glory !important;
   font-size: 1.7rem;
   background: -webkit-linear-gradient(
     25deg,
@@ -125,4 +144,12 @@
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   color: white;
+}
+
+#c {
+  width: 620px;
+  height: 620px;
+  display: block;
+  margin: 0 auto;
+  margin: calc(50vh - 310px) auto;
 }

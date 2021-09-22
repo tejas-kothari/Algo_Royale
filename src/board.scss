@@ -49,7 +49,12 @@ input[type="number"] {
     margin: auto;
     margin-bottom: 0;
     font-size: 1.2rem;
-    color: hsl(212, 10%, 26%);
+    // color: hsl(212, 10%, 26%);
+    color: black;
+    font-weight: 500;
+    font-family: Glory;
+    // background-clip: initial;
+    // text-fill-color:
   }
   a {
     font-weight: 500;
@@ -58,6 +63,10 @@ input[type="number"] {
   }
   a:hover {
     opacity: 0.5;
+  }
+  .sectionButtons {
+    color: #404040;
+    cursor: pointer;
   }
 
   .expand-menu {
