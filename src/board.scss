@@ -132,7 +132,7 @@ p {
 button {
   display: flex;
   margin: auto;
-  border: 3px solid hsl(27, 53%, 55%);
+  border: 2px solid hsl(27, 53%, 55%);
   border-radius: 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
@@ -215,9 +215,15 @@ button {
 
   margin: 1rem 0.2rem;
   padding: 1rem;
-  border: 3px solid hsl(27, 53%, 55%);
+  border: 2px solid hsl(27, 53%, 55%);
   border-radius: 0.5rem;
   box-shadow: 0px 0px 2rem hsl(0, 0%, 10%);
+  transition: all 400ms ease-in-out;
+  &:hover {
+    // opacity: 0.5;
+    box-shadow: 0 0 30px hsl(29, 81%, 79%) inset;
+    // border: 3px solid hsl(27, 53%, 55%);
+  }
 }
 
 .row-one,
@@ -326,6 +332,13 @@ button {
 }
 
 .sapphire {
+  .dice {
+    background: linear-gradient(
+      25deg,
+      hsl(228, 80%, 42%) 0%,
+      hsl(218, 80%, 54%) 100%
+    );
+  }
   .element {
     // background: linear-gradient(
     //   25deg,
@@ -337,6 +350,13 @@ button {
 }
 
 .ruby {
+  .dice {
+    background: linear-gradient(
+      25deg,
+      hsl(355, 80%, 42%) 0%,
+      hsl(2, 80%, 54%) 100%
+    );
+  }
   .element {
     // background: linear-gradient(
     //   25deg,
