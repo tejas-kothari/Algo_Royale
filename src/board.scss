@@ -42,6 +42,8 @@ input[type="number"] {
   width: 30vw;
   margin: auto;
   top: 0;
+
+  a,
   p {
     all: initial;
     margin: auto;
@@ -49,11 +51,21 @@ input[type="number"] {
     font-size: 1.2rem;
     color: hsl(212, 10%, 26%);
   }
+  a {
+    font-weight: 500;
+    // color: hsl(355, 80%, 42%);
+    text-decoration: underline;
+  }
+  a:hover {
+    opacity: 0.5;
+  }
+
   .expand-menu {
     transform: translateY($menu-height - 1rem);
   }
   .element {
-    transition: all 300ms ease-in-out;
+    flex-direction: column;
+    transition: all 400ms ease-in-out;
     margin: 0;
     position: absolute;
     height: $menu-height;

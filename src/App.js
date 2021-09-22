@@ -19,6 +19,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact>
+          <Menu walletBal={walletBal} />
           <Welcome />
         </Route>
         <Route path="/sicbo" exact>
@@ -30,6 +31,7 @@ function App() {
           </div>
         </Route>
         <Route path="/marketplace">
+          <Menu walletBal={walletBal} />
           <div id="modal"></div>
           <Marketplace />
         </Route>

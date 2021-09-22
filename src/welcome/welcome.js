@@ -30,7 +30,7 @@ export default function Welcome() {
   }, []);
 
   return (
-    <body className="welcome">
+    <body className="welcome" id="welcome">
       <section>
         <h1>Algo Royale</h1>
       </section>

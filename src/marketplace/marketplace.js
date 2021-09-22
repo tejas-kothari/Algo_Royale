@@ -51,7 +51,7 @@ export default function Marketplace() {
   };
 
   return (
-    <div className="marketplace">
+    <div className="marketplace" id="market">
       <div className="marketplace-header">
         <p>AlgoRoyale NFT Marketplace</p>
 
