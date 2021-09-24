@@ -4,7 +4,7 @@ import "../board.scss";
 
 export default function Row2({ onOpen }) {
   return (
-    <div className="row-two">
+    <div id="row2" className="row-two">
       <div className="element">
         <p>1 WINS 5</p>
       </div>

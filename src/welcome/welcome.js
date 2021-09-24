@@ -65,6 +65,9 @@ export default function Welcome() {
           </div>
         </div>
       </section>
+      <footer>
+        <p>A product by XPact</p>
+      </footer>
     </body>
   );
 }

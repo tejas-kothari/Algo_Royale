@@ -57,7 +57,7 @@
 
 .welcome .main {
   position: relative;
-  top: -170px;
+  top: -200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -222,6 +222,13 @@
   color: honeydew;
   font-family: Glory;
   font-weight: 100;
-  font-size: 12px;
   margin-top: 100px;
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.welcome footer p {
+  font-size: 15px;
 }

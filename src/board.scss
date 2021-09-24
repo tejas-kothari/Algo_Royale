@@ -22,7 +22,7 @@ input[type="number"] {
   top: 50%;
   left: 50%;
   perspective: 1000px;
-  transform: translate(-50%, -50%) scale(0.64);
+  transform: translate(-50%, -50%) scale(0.6);
   transition: all 300ms ease-in-out;
   text-align: center;
 
@@ -68,8 +68,11 @@ input[type="number"] {
     opacity: 0.5;
   }
   .sectionButtons {
-    color: #404040;
     cursor: pointer;
+    color: #404040;
+  }
+  .sectionButtons:hover {
+    opacity: 0.5;
   }
 
   .expand-menu {
@@ -97,6 +100,13 @@ input[type="number"] {
   display: flex;
   margin: 0;
 
+  h2 {
+    // color: white;
+    background: -webkit-linear-gradient(25deg, #c9864f 0%, #f5c89e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   p {
     all: initial;
     margin: auto;
@@ -110,11 +120,28 @@ input[type="number"] {
     margin: 1rem;
     border: none;
 
-    background: -webkit-linear-gradient(
-      25deg,
-      hsl(27, 53%, 55%) 0%,
-      hsl(29, 81%, 79%) 100%
-    );
+    display: flex;
+    flex-direction: column;
+
+    // background: -webkit-linear-gradient(
+    //   25deg,
+    //   hsl(27, 53%, 55%) 0%,
+    //   hsl(29, 81%, 79%) 100%
+    // );
+
+    &:hover {
+      box-shadow: 0px 0px 2rem hsl(0, 0%, 10%);
+    }
+
+    .userNFT {
+      display: grid;
+      grid-gap: 0.7rem;
+      // grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      grid-template-columns: auto auto;
+      img {
+        max-width: 100%;
+      }
+    }
   }
 }
 // .board {
@@ -150,6 +177,7 @@ button {
 .dice {
   width: 3rem;
   height: 3rem;
+  border: 2px solid transparent;
 }
 
 .dot {
@@ -334,38 +362,129 @@ button {
   }
 }
 
-.sapphire {
+.platinum {
+  box-shadow: 0 0 20px hsl(0, 0%, 96%) inset;
+
   .dice {
+    border: 2px solid hsl(27, 53%, 55%);
+    background: linear-gradient(
+      25deg,
+      hsl(0, 0%, 79%) 0%,
+      hsl(0, 0%, 96%) 100%
+    );
+  }
+  // p {
+  //   background: initial;
+  //   -webkit-background-clip: initial;
+  //   -webkit-text-fill-color: initial;
+
+  //   color: hsl(0, 0%, 96%) !important;
+  // }
+}
+
+.sapphire {
+  box-shadow: 0 0 20px hsl(218, 80%, 54%) inset;
+
+  .dice {
+    border: 2px solid hsl(27, 53%, 55%);
     background: linear-gradient(
       25deg,
       hsl(228, 80%, 42%) 0%,
       hsl(218, 80%, 54%) 100%
     );
   }
-  .element {
-    // background: linear-gradient(
-    //   25deg,
-    //   hsl(228, 80%, 42%) 0%,
-    //   hsl(218, 80%, 54%) 100%
-    // );
-    border-color: hsl(218, 80%, 54%);
-  }
 }
 
 .ruby {
+  box-shadow: 0 0 20px hsl(2, 80%, 54%) inset;
+
   .dice {
+    border: 2px solid hsl(27, 53%, 55%);
     background: linear-gradient(
       25deg,
       hsl(355, 80%, 42%) 0%,
       hsl(2, 80%, 54%) 100%
     );
   }
-  .element {
-    // background: linear-gradient(
-    //   25deg,
-    //   hsl(355, 80%, 42%) 0%,
-    //   hsl(2, 80%, 54%) 100%
-    // );
-    border-color: hsl(2, 80%, 54%);
+}
+
+.emerald {
+  box-shadow: 0 0 20px hsl(95, 68%, 46%) inset;
+
+  .dice {
+    border: 2px solid hsl(27, 53%, 55%);
+    background: linear-gradient(
+      25deg,
+      hsl(115, 81%, 22%) 0%,
+      hsl(95, 68%, 46%) 100%
+    );
+  }
+}
+
+.amethyst {
+  box-shadow: 0 0 20px hsl(294, 100%, 50%) inset;
+
+  .dice {
+    border: 2px solid hsl(27, 53%, 55%);
+    background: linear-gradient(
+      25deg,
+      hsl(276, 85%, 42%) 0%,
+      hsl(294, 100%, 50%) 100%
+    );
+  }
+}
+
+.obsidian {
+  box-shadow: 0 0 20px hsl(0, 0%, 52%) inset;
+
+  .dice {
+    border: 2px solid hsl(27, 53%, 55%);
+    background: linear-gradient(
+      25deg,
+      hsl(0, 0%, 19%) 0%,
+      hsl(0, 0%, 52%) 100%
+    );
+  }
+
+  .dot {
+    background: linear-gradient(
+      200deg,
+      hsl(0, 0%, 53%) 0%,
+      hsl(0, 0%, 70%) 100%
+    );
+  }
+}
+
+.citrine {
+  box-shadow: 0 0 20px hsl(75, 80%, 54%) inset;
+
+  .dice {
+    border: 2px solid hsl(27, 53%, 55%);
+    background: linear-gradient(
+      25deg,
+      hsl(25, 100%, 54%) 0%,
+      hsl(75, 80%, 54%) 100%
+    );
+  }
+
+  .dot {
+    background: linear-gradient(
+      200deg,
+      hsl(0, 0%, 5%) 0%,
+      hsl(0, 0%, 40%) 100%
+    );
+  }
+}
+
+.diamond {
+  box-shadow: 0 0 20px hsl(164, 100%, 54%) inset;
+
+  .dice {
+    border: 2px solid hsl(27, 53%, 55%);
+    background: linear-gradient(
+      25deg,
+      hsl(164, 100%, 54%) 0%,
+      hsl(218, 80%, 54%) 100%
+    );
   }
 }

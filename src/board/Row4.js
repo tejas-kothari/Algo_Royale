@@ -4,7 +4,7 @@ import "../board.scss";
 
 export default function Row4({ onOpen }) {
   return (
-    <div className="row-four">
+    <div id="row4" className="row-four">
       <div
         className="col"
         onClick={() => onOpen("sum_range_small", null, null, 1)}

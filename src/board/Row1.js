@@ -54,7 +54,7 @@ export default function Row1({ onOpen }) {
         <p>1 wins {b + rowValue1} on two dice</p>
         <p>1 wins {c + rowValue1} on three dice</p>
       </div>
-      <button onClick={upgradeRow1}>Upgrade Row 1</button>
+      {/* <button onClick={upgradeRow1}>Upgrade Row 1</button> */}
     </>
   );
 }
