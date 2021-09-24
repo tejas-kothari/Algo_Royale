@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import "./board.scss";
 import Dice1 from "./images/Dice-1.png";
 import Dice2 from "./images/Dice-2.png";
@@ -10,6 +10,7 @@ import Dice7 from "./images/Dice-7.png";
 import Dice8 from "./images/Dice-8.png";
 
 export default function Status() {
+  const [addedColors, setAddedColors] = useState([]);
   function changeNFT(color) {
     const rows = ["row1", "row2", "row3", "row4"];
 
@@ -19,9 +20,15 @@ export default function Status() {
         .getElementsByClassName("element");
       var listLength = list.length;
       for (var j = 0; j < listLength; j++) {
+        console.log(list[j].classList);
+        console.log(addedColors);
+        for (let k = 0; k < addedColors.length; k++) {
+          list[j].classList.remove(addedColors[k]);
+        }
         list[j].classList.add(color);
       }
     }
+    setAddedColors((oldAddedColors) => [color, ...oldAddedColors]);
   }
 
   return (
