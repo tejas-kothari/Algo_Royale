@@ -8,10 +8,15 @@ import Dice5 from "./images/Dice-5.png";
 import Dice6 from "./images/Dice-6.png";
 import Dice7 from "./images/Dice-7.png";
 import Dice8 from "./images/Dice-8.png";
+import { useSelector } from "react-redux";
 
 export default function Status() {
+  const myBoughtItems = useSelector((state) => state.store.myItems);
   const [addedColors, setAddedColors] = useState([]);
-  function changeNFT(color) {
+  function changeNFT(itemName) {
+    const color = itemName.replace(" Dice", "").toLowerCase();
+    console.log(color);
+
     const rows = ["row1", "row2", "row3", "row4"];
 
     for (var i = 0; i < 4; i++) {
@@ -36,14 +41,17 @@ export default function Status() {
       <div className="element">
         <h2>My Assets </h2>
         <div className="userNFT">
-          <img onClick={() => changeNFT("platinum")} src={Dice1} />
+          {myBoughtItems.map((item, index) => (
+            <img onClick={() => changeNFT(item.itemName)} src={item.image} />
+          ))}
+          {/* <img onClick={() => changeNFT("platinum")} src={Dice1} />
           <img onClick={() => changeNFT("sapphire")} src={Dice2} />
           <img onClick={() => changeNFT("ruby")} src={Dice3} />
           <img onClick={() => changeNFT("emerald")} src={Dice4} />
           <img onClick={() => changeNFT("amethyst")} src={Dice5} />
           <img onClick={() => changeNFT("obsidian")} src={Dice6} />
           <img onClick={() => changeNFT("citrine")} src={Dice7} />
-          <img onClick={() => changeNFT("diamond")} src={Dice8} />
+          <img onClick={() => changeNFT("diamond")} src={Dice8} /> */}
         </div>
         <p>Test </p>
       </div>
