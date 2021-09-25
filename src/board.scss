@@ -96,10 +96,11 @@ input[type="number"] {
   }
 }
 
-#status {
+#status,
+#rolldice {
   display: flex;
   margin: 0;
-
+  margin-left: 2rem;
   h2 {
     // color: white;
     background: -webkit-linear-gradient(25deg, #c9864f 0%, #f5c89e 100%);
@@ -137,7 +138,7 @@ input[type="number"] {
       display: grid;
       grid-gap: 0.7rem;
       // grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-      grid-template-columns: auto auto;
+      grid-template-columns: minmax(auto, 0.5fr) minmax(auto, 0.5fr);
       img {
         max-width: 100%;
       }
@@ -159,19 +160,34 @@ p {
   -webkit-text-fill-color: transparent;
 }
 
+.bigtext {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
 button {
   display: flex;
   margin: auto;
+  // padding: 1rem;
+  cursor: pointer;
+
   border: 2px solid hsl(27, 53%, 55%);
   border-radius: 0.5rem;
+
   font-size: 1.2rem;
   font-weight: 500;
+  font-family: Glory;
+
   color: hsl(212, 10%, 26%);
   background: -webkit-linear-gradient(
     25deg,
     hsl(27, 53%, 55%) 0%,
     hsl(29, 81%, 79%) 100%
   );
+  &:hover {
+    background: hsl(212, 10%, 26%);
+    color: hsl(29, 81%, 79%);
+  }
 }
 
 .dice {
@@ -193,6 +209,7 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 
   button {
     margin: 1rem;
@@ -207,7 +224,9 @@ button {
   //   z-index: 1000;
   //   background: black;
   // }
-
+  .prob {
+    opacity: 0.5;
+  }
   .input-bet {
     display: flex;
     align-items: center;
@@ -232,7 +251,7 @@ button {
 
 .element {
   width: 100%;
-
+  cursor: pointer;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -486,5 +505,76 @@ button {
       hsl(164, 100%, 54%) 0%,
       hsl(218, 80%, 54%) 100%
     );
+  }
+}
+
+//Dice
+
+#rolldice {
+  flex-direction: column;
+  .element {
+    height: auto;
+
+    background: -webkit-linear-gradient(25deg, #c9864f 0%, #f5c89e 100%);
+
+    .faDice {
+      // background: linear-gradient(
+      //   20deg,
+      //   hsl(0, 0%, 30%) 0%,
+      //   hsl(0, 0%, 40%) 100%
+      // );
+      color: #3c4249;
+
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+
+      -webkit-text-stroke: 0px transparent;
+      font-size: 4rem;
+
+      padding: 0.25rem;
+      text-shadow: 1px 1px 5px #c9864f, -1px -1px 5px #c9864f;
+    }
+
+    button {
+      border: 3px solid #3c4249;
+      font-weight: 600;
+      margin: 1rem auto;
+      padding: 1rem;
+    }
+  }
+}
+
+.shaking {
+  animation-name: wobble;
+  animation-duration: 1s;
+}
+
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-45%, 0, 0) rotate3d(0, 0, 1, -90deg);
+  }
+
+  30% {
+    transform: translate3d(40%, 0, 0) rotate3d(0, 0, 1, 90deg);
+  }
+
+  45% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -45deg);
+  }
+
+  60% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 45deg);
+  }
+
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }

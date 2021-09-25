@@ -29,7 +29,7 @@ export default function Status() {
   }
 
   return (
-    <div className="board-screen-child" id="status">
+    <div id="status">
       <div className="element">
         <h2>My Assets </h2>
         <div className="userNFT">
@@ -45,7 +45,6 @@ export default function Status() {
           <img onClick={() => changeNFT("citrine")} src={Dice7} />
           <img onClick={() => changeNFT("diamond")} src={Dice8} /> */}
         </div>
-        <p>Test </p>
       </div>
     </div>
   );

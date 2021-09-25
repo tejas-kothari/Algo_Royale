@@ -1,65 +1,72 @@
-
-  .dice {
-    padding: 4px;
-    background: linear-gradient(25deg, hsl(27, 53%, 55%) 0%, hsl(29, 81%, 79%)100%);
-    /* width: 100px;
+.dice {
+  padding: 4px;
+  background: linear-gradient(
+    25deg,
+    hsl(27, 53%, 55%) 0%,
+    hsl(29, 81%, 79%) 100%
+  );
+  /* width: 100px;
     height: 100px; */
-    border-radius: 10%;
-    /* margin-right : 10px; */
-    box-shadow: 0px 0px 1rem hsla(0, 0%, 27%, 0.5);
+  border-radius: 10%;
+  /* margin-right : 10px; */
+  box-shadow: 0px 0px 1rem hsla(0, 0%, 27%, 0.5);
+
+  font-size: 10rem;
+}
+.dot {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: linear-gradient(200deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 40%) 100%);
+  // background-color: hsl(0, 0%, 27%);
+}
+
+.first-face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.second-face {
+  display: flex;
+  justify-content: space-between;
+
+  .dot:nth-of-type(2) {
+    align-self: flex-end;
   }
-  .dot{
-    display: block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: linear-gradient(200deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 40%) 100%);
-    // background-color: hsl(0, 0%, 27%);
+}
+
+.third-face {
+  display: flex;
+  justify-content: space-between;
+
+  .dot:nth-of-type(1) {
+    align-self: flex-start;
   }
-  
-  .first-face {
+
+  .dot:nth-of-type(2) {
+    align-self: center;
+  }
+
+  .dot:nth-of-type(3) {
+    align-self: flex-end;
+  }
+}
+
+.fourth-face,
+.sixth-face,
+.fifth-face {
+  display: flex;
+  justify-content: space-between;
+
+  .column {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .second-face{
-    display: flex ;
+    flex-direction: column;
     justify-content: space-between;
-
-    .dot:nth-of-type(2) {
-      align-self: flex-end;
-    }
   }
+}
 
-  .third-face {
-    display: flex;
-    justify-content: space-between;
-
-    .dot:nth-of-type(1) {
-      align-self :flex-start;
-    }
-
-    .dot:nth-of-type(2) {
-      align-self :center;
-    }
-
-    .dot:nth-of-type(3) {
-      align-self: flex-end;
-    }
-  }
-  
-  .fourth-face , .sixth-face, .fifth-face{
-    display: flex;
-    justify-content: space-between;
-
-    .column{
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-  }
-  
-  .fifth-face .column:nth-of-type(2) {
-    justify-content: center;
-  }
+.fifth-face .column:nth-of-type(2) {
+  justify-content: center;
+}

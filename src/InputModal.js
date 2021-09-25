@@ -199,7 +199,7 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
           />
         </div>
         <div>
-          <p>1 WINS {betDetails.mult}</p>
+          <p className="prob">1 WINS {betDetails.mult}</p>
           <p>
             {bet} WINS {bet * betDetails.mult}
           </p>

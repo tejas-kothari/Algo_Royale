@@ -10,16 +10,16 @@ export default function Row4({ onOpen }) {
         onClick={() => onOpen("sum_range_small", null, null, 1)}
       >
         <p>
-          SMALL
+          <span className="bigtext">SMALL</span>
           <br />
           <span>ARE NUMBERS </span>
         </p>
-        <p>
-          4 <span>TO </span>
+        <p className="bigtext">
+          4 <span style={{ fontSize: "1.2rem" }}>TO </span>
           10
         </p>
-        <p>
-          1 <span>WINS </span>1
+        <p className="bigtext">
+          1 <span style={{ fontSize: "1.2rem" }}>WINS </span>1
         </p>
         <p>
           LOSE IF ANY <br />
@@ -194,16 +194,16 @@ export default function Row4({ onOpen }) {
         onClick={() => onOpen("sum_range_big", null, null, 1)}
       >
         <p>
-          BIG
+          <span className="bigtext">BIG</span>
           <br />
-          <span>ARE NUMBERS </span>
+          <span style={{ fontSize: "1.2rem" }}>ARE NUMBERS </span>
         </p>
-        <p>
-          11 <span>TO </span>
+        <p className="bigtext">
+          11 <span style={{ fontSize: "1.2rem" }}>TO </span>
           17
         </p>
-        <p>
-          1 <span>WINS </span>1
+        <p className="bigtext">
+          1 <span style={{ fontSize: "1.2rem" }}>WINS </span>1
         </p>
         <p>
           LOSE IF ANY <br />

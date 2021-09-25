@@ -13,7 +13,7 @@ const initialState = {
   myItems: [],
   marketplaceItems: [
     {
-      itemName: "Silver Dice",
+      itemName: "Platinum Dice",
       price: 450,
       image: Dice1,
       style: {

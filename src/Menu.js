@@ -21,10 +21,12 @@ export default function Menu({ walletBal }) {
         document.getElementById("menu-element").classList.add("expand-menu");
         document.getElementById("board").classList.add("board-filter");
         document.getElementById("status").classList.add("board-filter");
+        document.getElementById("rolldice").classList.add("board-filter");
       } else {
         document.getElementById("menu-element").classList.remove("expand-menu");
         document.getElementById("board").classList.remove("board-filter");
         document.getElementById("status").classList.remove("board-filter");
+        document.getElementById("rolldice").classList.remove("board-filter");
       }
     } else if (marketExists != null) {
       if (toggle === false) {

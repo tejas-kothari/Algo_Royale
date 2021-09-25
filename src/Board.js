@@ -26,10 +26,12 @@ export default function Board({ changeBal }) {
       setIsOpen(true);
       document.getElementById("board").classList.add("board-filter");
       document.getElementById("status").classList.add("board-filter");
+      document.getElementById("rolldice").classList.add("board-filter");
     } else {
       setIsOpen(false);
       document.getElementById("board").classList.remove("board-filter");
       document.getElementById("status").classList.remove("board-filter");
+      document.getElementById("rolldice").classList.remove("board-filter");
     }
 
     setBetDetails({

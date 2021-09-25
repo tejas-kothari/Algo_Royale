@@ -7,6 +7,7 @@ import "./board.scss";
 import Status from "./Status";
 import Marketplace from "./marketplace/marketplace";
 import Welcome from "./welcome/welcome";
+import RollDice from "./dice-throw/RollDice";
 
 function App() {
   const [walletBal, setWalletBal] = useState(1000);
@@ -27,7 +28,10 @@ function App() {
           <div id="modal"></div>
           <div className="board-screen">
             <Board changeBal={val} />
-            <Status />
+            <div className="board-screen-child">
+              <Status />
+              <RollDice />
+            </div>
           </div>
         </Route>
         <Route path="/marketplace">
