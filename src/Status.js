@@ -1,13 +1,5 @@
 import { React, useState } from "react";
 import "./board.scss";
-import Dice1 from "./images/Dice-1.png";
-import Dice2 from "./images/Dice-2.png";
-import Dice3 from "./images/Dice-3.png";
-import Dice4 from "./images/Dice-4.png";
-import Dice5 from "./images/Dice-5.png";
-import Dice6 from "./images/Dice-6.png";
-import Dice7 from "./images/Dice-7.png";
-import Dice8 from "./images/Dice-8.png";
 import { useSelector } from "react-redux";
 
 export default function Status() {
