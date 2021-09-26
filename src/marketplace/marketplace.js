@@ -3,7 +3,7 @@ import "./marketplace.scss";
 import sampleNFTImage from "../images/ennj-artwork-1080x675.png";
 import algoIcon from "../images/algoIcon.png";
 import { useDispatch, useSelector } from "react-redux";
-import { buyItem, sellItem } from "../storeSlice.js";
+import { buyItem, sellItem, decUserBalance } from "../storeSlice.js";
 import MyAlgoConnect from "@randlabs/myalgo-connect";
 import algosdk from "algosdk";
 import walletshs from "../images/001-wallet.svg";
@@ -48,6 +48,7 @@ export default function Marketplace() {
   const buyItemHTML = async (item, index) => {
     await sendTx();
     dispatch(buyItem(index));
+    dispatch(decUserBalance(item.price));
   };
 
   return (
