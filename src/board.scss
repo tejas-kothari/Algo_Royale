@@ -578,3 +578,22 @@ button {
     transform: translate3d(0, 0, 0);
   }
 }
+
+.lose {
+  animation: LOSER 0.5s ease-in-out;
+}
+
+@keyframes LOSER {
+  0%,
+  33% {
+    box-shadow: 0 0 50px hsl(355, 80%, 42%) inset, 0 0 10px hsl(355, 80%, 42%);
+  }
+  34%,
+  67% {
+    box-shadow: none;
+  }
+  68%,
+  100% {
+    box-shadow: 0 0 50px hsl(355, 80%, 42%) inset, 0 0 10px hsl(355, 80%, 42%);
+  }
+}

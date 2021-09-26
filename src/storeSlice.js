@@ -9,6 +9,14 @@ import Dice7 from "./images/Dice-7.png";
 import Dice8 from "./images/Dice-8.png";
 
 const initialState = {
+  bets: {
+    betAmount: 0,
+    betResult: 0,
+    betDetails: {},
+  },
+  runConfetti: false,
+  userBalance: 100000,
+  finishedRolling: false,
   diceRoll: {
     rollTrue: false,
     dice1: 6,
@@ -120,6 +128,27 @@ export const storeSlice = createSlice({
     },
     stopDiceRoll: (state, action) => {
       state.diceRoll.rollTrue = false;
+      state.finishedRolling = true;
+    },
+    resetFinishedRolling: (state, action) => {
+      state.finishedRolling = false;
+    },
+    incUserBalance: (state, action) => {
+      state.userBalance = state.userBalance + action.payload;
+    },
+    decUserBalance: (state, action) => {
+      state.userBalance = state.userBalance - action.payload;
+    },
+    startConfetti: (state, action) => {
+      state.runConfetti = true;
+    },
+    stopConfetti: (state, action) => {
+      state.runConfetti = false;
+    },
+    pushBet: (state, action) => {
+      state.bets.betAmount = action.payload.betAmount;
+      state.bets.betResult = action.payload.betResult;
+      state.bets.betDetails = action.payload.betDetails;
     },
   },
 });
@@ -130,6 +159,12 @@ export const {
   sellItem,
   startDiceRoll,
   stopDiceRoll,
+  incUserBalance,
+  decUserBalance,
+  startConfetti,
+  stopConfetti,
+  resetFinishedRolling,
+  pushBet,
 } = storeSlice.actions;
 
 export default storeSlice.reducer;

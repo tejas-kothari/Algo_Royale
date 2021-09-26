@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./board.scss";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default function Menu({ walletBal }) {
+export default function Menu() {
+  const walletBal = useSelector((state) => state.store.userBalance);
   let history = useHistory();
   const [toggle, setToggle] = useState(false);
   // const [menu, setMenu] = useState();

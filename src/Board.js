@@ -6,9 +6,11 @@ import Row3 from "./board/Row3";
 import Row4 from "./board/Row4";
 import InputModal from "./InputModal";
 import "./board.scss";
+import WinModal from "./WinModal";
 
-export default function Board({ changeBal }) {
+export default function Board() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isWinOpen, setIsWinOpen] = useState(false);
 
   // betType represents the the kind of bet - "one", "two", "sum", "sum_range_small", "sum_range_big", "double", "triple", "any_triple"
   // for row1, all of them are going to be type "one"
@@ -51,10 +53,10 @@ export default function Board({ changeBal }) {
       <InputModal
         open={isOpen}
         onClose={openClose}
-        changeBal={changeBal}
-        // value={val}
         betDetails={betDetails}
+        openWin={() => setIsWinOpen(true)}
       />
+      <WinModal open={isWinOpen} onClose={() => setIsWinOpen(false)} />
       {/* {isOpen ? null : (
             <button onClick={() => setIsOpen(true)}>open modal</button>
           )} */}

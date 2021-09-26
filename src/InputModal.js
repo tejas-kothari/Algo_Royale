@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./board.scss";
 import MyAlgoConnect from "@randlabs/myalgo-connect";
-import { useDispatch } from "react-redux";
-import { startDiceRoll } from "./storeSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  startDiceRoll,
+  startConfetti,
+  stopConfetti,
+  pushBet,
+} from "./storeSlice.js";
 import algosdk from "algosdk";
 import algoIcon from "./images/algoIcon.png";
+import {
+  incUserBalance,
+  decUserBalance,
+  resetFinishedRolling,
+} from "./storeSlice.js";
 
 const MODAL_STYLES = {
   position: "fixed",
@@ -17,16 +27,34 @@ const MODAL_STYLES = {
   // backgroundColor: "hsla(0,0%,0%,0.3)",
 };
 
-export default function InputModal({ open, onClose, betDetails, changeBal }) {
+export default function InputModal({ open, onClose, betDetails, openWin }) {
+  const finishedRolling = useSelector((state) => state.store.finishedRolling);
+  const finalResult = useSelector((state) => state.store.bets.betResult);
+  const betDetailsRedux = useSelector((state) => state.store.bets.betDetails);
   const dispatch = useDispatch();
-  console.log(betDetails);
+
   const [bet, setBet] = useState(null);
-  // const [submit, setSubmit] = useState(false);
+
+  useEffect(() => {
+    if (finishedRolling) {
+      if (finalResult === 1) {
+        openWin();
+        dispatch(startConfetti());
+        dispatch(incUserBalance((betDetailsRedux.mult - 1) * bet));
+      } else {
+        dispatch(decUserBalance(bet));
+        console.log("Lost bet");
+      }
+
+      dispatch(resetFinishedRolling());
+      setBet(0);
+    }
+  }, [finishedRolling]);
 
   if (!open) return null;
+
   function changeBet(val) {
     setBet(val.target.value);
-    // setSubmit(false);
   }
 
   async function onUserSubmit() {
@@ -35,14 +63,18 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     const dice3 = getRandomIntInclusive(1, 6);
 
     const betResult = await sendTxs(dice1, dice2, dice3);
+    dispatch(
+      pushBet({
+        betAmount: bet,
+        betResult: betResult,
+        betDetails: { ...betDetails },
+      })
+    );
+
     console.log("bet result");
     console.log(betResult);
 
-    setBet(0);
     onClose();
-    // setSubmit(true);
-    changeBal(bet);
-
     dispatch(startDiceRoll({ dice1: dice1, dice2: dice2, dice3: dice3 }));
   }
 
@@ -193,14 +225,12 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     <>
       <div style={MODAL_STYLES} id="modal-background" onClick={onClose}></div>
       <div className="element" id="submit-bet">
-        {/* <div>{submit ? <p>{bet} ALGO</p> : null} </div> */}
         <div className="input-bet">
           <img src={algoIcon} />
           <input
             type="number"
             onChange={changeBet}
             placeholder="Bet (Minimum 5 ALGO)"
-            // value="5"
             min="5"
           />
         </div>
