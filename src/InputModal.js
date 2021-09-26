@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./board.scss";
-import Menu from "./Menu";
 import MyAlgoConnect from "@randlabs/myalgo-connect";
+import { useDispatch } from "react-redux";
+import { startDiceRoll } from "./storeSlice.js";
 import algosdk from "algosdk";
 import algoIcon from "./images/algoIcon.png";
 
@@ -17,20 +18,32 @@ const MODAL_STYLES = {
 };
 
 export default function InputModal({ open, onClose, betDetails, changeBal }) {
+  const dispatch = useDispatch();
+  console.log(betDetails);
   const [bet, setBet] = useState(null);
-  const [submit, setSubmit] = useState(false);
+  // const [submit, setSubmit] = useState(false);
 
   if (!open) return null;
   function changeBet(val) {
     setBet(val.target.value);
-    setSubmit(false);
+    // setSubmit(false);
   }
 
-  function onUserSubmit() {
-    setSubmit(true);
-    changeBal(bet);
-    sendTxs();
+  async function onUserSubmit() {
+    const dice1 = getRandomIntInclusive(1, 6);
+    const dice2 = getRandomIntInclusive(1, 6);
+    const dice3 = getRandomIntInclusive(1, 6);
+
+    const betResult = await sendTxs(dice1, dice2, dice3);
+    console.log("bet result");
+    console.log(betResult);
+
     setBet(0);
+    onClose();
+    // setSubmit(true);
+    changeBal(bet);
+
+    dispatch(startDiceRoll({ dice1: dice1, dice2: dice2, dice3: dice3 }));
   }
 
   function getRandomIntInclusive(min, max) {
@@ -39,7 +52,7 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   }
 
-  const sendTxs = async () => {
+  const sendTxs = async (dice1, dice2, dice3) => {
     const myAlgoConnect = new MyAlgoConnect();
     const accountsSharedByUser = await myAlgoConnect.connect();
     console.log(accountsSharedByUser[0].address);
@@ -68,14 +81,18 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     const betArgs = [];
 
     betArgs.push(new Uint8Array(Buffer.from("bet")));
-    betArgs.push(new Uint8Array(Buffer.from("one")));
+    betArgs.push(new Uint8Array(Buffer.from(betDetails.betType)));
 
-    betArgs.push(algosdk.encodeUint64(3));
-    betArgs.push(algosdk.encodeUint64(4));
-
-    const dice1 = getRandomIntInclusive(1, 6);
-    const dice2 = getRandomIntInclusive(1, 6);
-    const dice3 = getRandomIntInclusive(1, 6);
+    betArgs.push(
+      algosdk.encodeUint64(
+        betDetails.val1 ? betDetails.val1 : getRandomIntInclusive(1, 6)
+      )
+    );
+    betArgs.push(
+      algosdk.encodeUint64(
+        betDetails.val2 ? betDetails.val2 : getRandomIntInclusive(1, 6)
+      )
+    );
 
     betArgs.push(algosdk.encodeUint64(dice1));
     betArgs.push(algosdk.encodeUint64(dice2));
@@ -87,13 +104,6 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
       appIndex,
       betArgs
     );
-    // betArgs.push(new Uint8Array(Buffer.from("test")));
-    // const txn = algosdk.makeApplicationNoOpTxn(
-    //   accountsSharedByUser[0].address,
-    //   suggestedParams,
-    //   appIndex,
-    //   betArgs
-    // );
 
     const signedTxn = await myAlgoConnect.signTransaction(txn.toByte());
     const response = await algodClient.sendRawTransaction(signedTxn.blob).do();
@@ -113,34 +123,30 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     console.log("Dice2: " + dice2);
     console.log("Dice3: " + dice3);
     console.log("Bet Result: " + betResult);
+
+    return betResult;
   };
 
   async function readGlobalState(client, addr, index) {
-    try {
-      let accountInfoResponse = await client.accountInformation(addr).do();
-      for (let i = 0; i < accountInfoResponse["created-apps"].length; i++) {
-        if (accountInfoResponse["created-apps"][i].id == index) {
-          console.log("Application's global state:");
-          for (
-            let n = 0;
-            n <
-            accountInfoResponse["created-apps"][i]["params"]["global-state"]
-              .length;
-            n++
-          ) {
-            console.log(
-              accountInfoResponse["created-apps"][i]["params"]["global-state"][
-                n
-              ]
-            );
-            return accountInfoResponse["created-apps"][i]["params"][
-              "global-state"
-            ][n];
-          }
+    let accountInfoResponse = await client.accountInformation(addr).do();
+    for (let i = 0; i < accountInfoResponse["created-apps"].length; i++) {
+      if (accountInfoResponse["created-apps"][i].id == index) {
+        console.log("Application's global state:");
+        for (
+          let n = 0;
+          n <
+          accountInfoResponse["created-apps"][i]["params"]["global-state"]
+            .length;
+          n++
+        ) {
+          console.log(
+            accountInfoResponse["created-apps"][i]["params"]["global-state"][n]
+          );
+          return accountInfoResponse["created-apps"][i]["params"][
+            "global-state"
+          ][n];
         }
       }
-    } catch (err) {
-      console.log(err);
     }
   }
 
@@ -187,7 +193,7 @@ export default function InputModal({ open, onClose, betDetails, changeBal }) {
     <>
       <div style={MODAL_STYLES} id="modal-background" onClick={onClose}></div>
       <div className="element" id="submit-bet">
-        <div>{submit ? <p>{bet} ALGO</p> : null} </div>
+        {/* <div>{submit ? <p>{bet} ALGO</p> : null} </div> */}
         <div className="input-bet">
           <img src={algoIcon} />
           <input

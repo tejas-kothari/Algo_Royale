@@ -8,8 +8,13 @@ import Dice6 from "./images/Dice-6.png";
 import Dice7 from "./images/Dice-7.png";
 import Dice8 from "./images/Dice-8.png";
 
-console.log(typeof Dice1);
 const initialState = {
+  diceRoll: {
+    rollTrue: false,
+    dice1: 6,
+    dice2: 6,
+    dice3: 6,
+  },
   myItems: [],
   marketplaceItems: [
     {
@@ -107,10 +112,24 @@ export const storeSlice = createSlice({
       item.price = action.payload.sellingPrice;
       state.marketplaceItems.push(item);
     },
+    startDiceRoll: (state, action) => {
+      state.diceRoll.dice1 = action.payload.dice1;
+      state.diceRoll.dice2 = action.payload.dice2;
+      state.diceRoll.dice3 = action.payload.dice3;
+      state.diceRoll.rollTrue = true;
+    },
+    stopDiceRoll: (state, action) => {
+      state.diceRoll.rollTrue = false;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { buyItem, sellItem } = storeSlice.actions;
+export const {
+  buyItem,
+  sellItem,
+  startDiceRoll,
+  stopDiceRoll,
+} = storeSlice.actions;
 
 export default storeSlice.reducer;
