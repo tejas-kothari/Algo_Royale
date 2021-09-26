@@ -44,6 +44,12 @@ export default function InputModal({ open, onClose, betDetails, openWin }) {
       } else {
         dispatch(decUserBalance(bet));
         console.log("Lost bet");
+        document.getElementById("menu-element").classList.add("lose");
+        setTimeout(
+          () =>
+            document.getElementById("menu-element").classList.remove("lose"),
+          1000
+        );
       }
 
       dispatch(resetFinishedRolling());
